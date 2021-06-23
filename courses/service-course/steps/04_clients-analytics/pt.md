@@ -6,7 +6,7 @@ Neste passo, alguns conceitos referentes a clientes serão brevemente explicados
 
 ## Sobre os clientes
 
-Clientes, no VTEX IO, são abstrações para outros serviços. Nós transpassamos a complexidade ao implementar um cliente HTTP, por exemplo, de forma que você consiga focar nos verdadeiros objetivos da sua aplicação. Sempre que vcoê precisar configurar uma conexão com uma API externa ou outro serviço da VTEX, você deve criar um cliente! Alguns clientes padrões já estão implementados no VTEX IO, você pode consultá-los [aqui](https://github.com/vtex/node-vtex-api/blob/ccf4d8f8d3208007c4bfd558baf979df8d825af8/src/clients/IOClients.ts).
+Clientes, no VTEX IO, são abstrações para outros serviços. Nós transpassamos a complexidade ao implementar um cliente HTTP, por exemplo, de forma que você consiga focar nos verdadeiros objetivos da sua aplicação. Sempre que você precisar configurar uma conexão com uma API externa ou outro serviço da VTEX, você deve criar um cliente! Alguns clientes padrões já estão implementados no VTEX IO, você pode consultá-los [aqui](https://github.com/vtex/node-vtex-api/blob/ccf4d8f8d3208007c4bfd558baf979df8d825af8/src/clients/IOClients.ts).
 
 Caso você já saiba um pouco mais sobre serviços no IO, você provavelmente já sabe que sua implementação exporta funções que recebem um objeto de contexto. Estas funções podem ser um _resolver_ para um campo de GraphQL, um _middleware_ para um servidor HTTP ou um _handler_ de eventos. Em todos os casos, você recebe um `ctx` (ou como você preferir chamá-lo), que é um objeto do tipo `Context` e dentro de `ctx.clients`, você encontrará diversos clientes, dentre os quais estão os que você implementou.
 
@@ -20,7 +20,7 @@ Neste curso, será necessário criar um cliente que será utilizado para consult
 
 Neste passo, vamos implementar o cliente de _Analytics_.
 
-1. Em primeiro lugar, no diretório `/node/clients`, você encontrará um arquivo chamado `analyticsClient.ts`, que já contém uma simples declaração de classe, como o código mostrado abaixo. É aqui que você implementará seu cliente.
+1. Em primeiro lugar, no diretório `/node/clients`, você encontrará um arquivo chamado `analytics.ts`, que já contém uma simples declaração de classe, como o código mostrado abaixo. É aqui que você implementará seu cliente.
 
    ```ts
    import { AppClient } from '@vtex/api'
@@ -28,7 +28,7 @@ Neste passo, vamos implementar o cliente de _Analytics_.
    export default class Analytics extends AppClient {}
    ```
 
-   > É possível notar neste bloco de código que `Analytics` é um cliente que estende de `AppClient`, pois esta classe oferece configurações já pré-esbeleciadas que asseguram que seu cliente tem uma comunicação segura com outras partes da sua _app_.
+   > É possível notar neste bloco de código que `Analytics` é um cliente que estende de `AppClient`, pois esta classe oferece configurações já pré-estabelecidas que asseguram que seu cliente tem uma comunicação segura com outras partes da sua _app_.
 
 2. O cliente precisa ter um construtor e apenas um método, que chamaremos de `getLiveUsers`. Este método retorna uma promessa de um _array_ em que seus elementos são do tipo `LiveUsersProduct`. Utilizando o código abaixo, adicione as linhas de código necessárias ao seu cliente:
 
